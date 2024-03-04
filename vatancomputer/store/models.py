@@ -9,6 +9,9 @@ class Customer(models.Model):
     lastName = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return f"{self.firstName} {self.lastName}"
 
 class ProductDetail(models.Model):
     description = models.CharField(max_length=500)
@@ -99,6 +102,9 @@ class ProductDetail(models.Model):
     height = models.CharField(max_length=50)
     width = models.CharField(max_length=50)
     
+    def __str__(self):
+        return str(self.id)
+    
        
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -109,10 +115,11 @@ class Product(models.Model):
     productDetail = models.ForeignKey(ProductDetail, on_delete=models.SET_NULL, blank=True, null=True)
     
     def __str__(self):
-        return name
+        return f"{self.brand} {self.name}"
 
 class ItemImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
+    image_order = models.IntegerField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
 class Order(models.Model):
@@ -121,7 +128,7 @@ class Order(models.Model):
     complete = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.id    
+        return str(self.id)
 
 # Order ile OrderItem mantığına internetten baktım
 class OrderItem(models.Model):
@@ -131,7 +138,7 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.id    
+        return str(self.id)
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
@@ -142,4 +149,4 @@ class ShippingAddress(models.Model):
     zipcode = models.CharField(max_length=20)
     
     def __str__(self):
-        return self.id
+        return str(self.id)
