@@ -15,9 +15,9 @@ body {
   flex-direction: row;
   padding: 1em 0em;
   flex-wrap: wrap;
-  flex-shrink: 1;
   flex-basis: content;
-  justify-content: center;
+  margin: auto 0em ;
+  /* justify-content: space-between; */
 }
 
 .cards-item {
@@ -25,7 +25,7 @@ body {
   box-sizing: border-box;
   display: inline-block;
   margin: 1em 0.6em 1em 0.6em;
-  width: 31% !important;
+  width: 23.5% !important;
 }
 
 #card-bottom {
@@ -192,6 +192,11 @@ body {
   /* View */
   #view-image {
     width: 42% !important;
+  }
+}
+@media screen and (max-width: 1420px) {
+  .cards-item {
+    width: 31% !important;
   }
 }
 

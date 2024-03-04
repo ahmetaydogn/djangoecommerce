@@ -116,6 +116,14 @@ class Product(models.Model):
     
     def __str__(self):
         return f"{self.brand} {self.name}"
+    
+    @property
+    def getImage(self):
+        try:
+            image_url = self.itemimage_set.filter(product=self, image_order=1).get().image.url
+        except:
+            image_url = ''
+        return image_url
 
 class ItemImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
