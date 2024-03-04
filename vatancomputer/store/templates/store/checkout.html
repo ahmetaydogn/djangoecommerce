@@ -1,0 +1,197 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Container -->
+<div class="container-md" id="shipping-container">
+    <div class="row g-5" id="shipping-info">
+        <div class="col-md-5 col-lg-4 order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Sepetiniz</span>
+                <!-- Enter Product Item Count -->
+                <span class="badge bg-primary rounded-pill">13</span>
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Kitap</h6>
+                        <small class="text-body-secondary">Kısa özet</small>
+                    </div>
+                    <span class="text-body-secondary">Toplam Ücret 400 TL</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Kulaklık</h6>
+                        <small class="text-body-secondary">Kısa özet</small>
+                    </div>
+                    <span class="text-body-secondary">Toplam Ücret 1200 TL</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Ayakkabı</h6>
+                        <small class="text-body-secondary">Kısa özet</small>
+                    </div>
+                    <span class="text-body-secondary">Toplam Ücret 200 TL</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Yazılım</h6>
+                        <small class="text-body-secondary">Kısa özet</small>
+                    </div>
+                    <span class="text-body-secondary">Toplam Ücret 800 TL</span>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Toplam (TL)</span>
+                    <strong>2600 TL</strong>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-md-7 col-lg-8">
+            <h4 class="mb-3">Fatura Adresi</h4>
+            <form class="needs-validation" novalidate>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="form-label">İsim</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            İsim girmek zorunludur.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label">Soyisim</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Soyisim girmek zorunludur.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="username" class="form-label">Kullanıcı Adı</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text">@</span>
+                            <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            <div class="invalid-feedback">
+                                Kullanıcı İsmi girmek zorunludur.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email <span
+                                class="text-body-secondary">(Opsiyonel)</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                            Lütfen teslimat için geçerli bir e posta adresi giriniz.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address" class="form-label">Adres</label>
+                        <input type="text" class="form-control" id="address" placeholder="Mahmut Paşa Sokağı" required>
+                        <div class="invalid-feedback">
+                            Lütfen teslimat adresini giriniz.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="address2" class="form-label">Adres 2 <span
+                                class="text-body-secondary">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="state" class="form-label">Şehir</label>
+                        <select class="form-select" id="state" required>
+                            <option value="">Seçiniz...</option>
+                            <option>California</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Lütfen geçerli bir şehir seçiniz.
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="zip" class="form-label">Posta Kodu</label>
+                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Posta Kodu zorunludur.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="same-address">
+                    <label class="form-check-label" for="same-address">Teslimat adresim fatura adresim ile aynı.</label>
+                </div>
+
+                <hr class="my-4">
+
+                <h4 class="mb-3">Ödeme Metodu</h4>
+
+                <div class="my-3">
+                    <div class="form-check">
+                        <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                        <label class="form-check-label" for="credit">Kredi Kartı</label>
+                    </div>
+                    <div class="form-check">
+                        <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                        <label class="form-check-label" for="debit">Bank Kartı</label>
+                    </div>
+                    <div class="form-check">
+                        <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                        <label class="form-check-label" for="paypal">PayPal</label>
+                    </div>
+                </div>
+
+                <div class="row gy-3">
+                    <div class="col-md-6">
+                        <label for="cc-name" class="form-label">Kartın Üzerindeki Ad Soyad</label>
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                        <small class="text-body-secondary">Kart üzerinde gözüken tam isim</small>
+                        <div class="invalid-feedback">
+                            Kart üzerindeki isim zorunludur.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="cc-number" class="form-label">Kart Numarası</label>
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                        <div class="invalid-feedback">Kredi kartı numarası zorunludur.
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="cc-expiration" class="form-label">Ay / Yıl</label>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="12/12" maxlength="5"
+                            required>
+                        <div class="invalid-feedback">
+                            Ay / Yıl zorunludur.
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="cc-cvv" class="form-label">CVC</label>
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="999" maxlength="3" required>
+                        <div class="invalid-feedback">
+                            Güvenlik kodu zorunludur.
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Ödeme işlemine devam edin</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

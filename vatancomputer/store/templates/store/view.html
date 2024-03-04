@@ -1,0 +1,751 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Product View -->
+<div class="container-md" id="view-container">
+    <!-- Product section-->
+    <section class="py-5" id="view-section">
+        <div class="container-md px-4 px-lg-5 my-5" style="background-color: #fdfdfd;">
+            <div class="row gx-4 gx-lg-5 align-items-center" id="view-items-container">
+                <div class="col-md-6" id="view-image">
+                    <!-- carousel -->
+                    <div id="carouselExampleIndicators" class="carousel slide">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{% static 'images/book_image.jpg' %}" class=" d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'images/headphones.jpg' %}" class=" d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{% static 'images/thirt_image.jpg' %}" class=" d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <!-- <img class="card-img-top mb-5 mb-md-0" src="images/book_image.jpg"
+                            alt="..." /> -->
+                </div>
+                <div class="col-md-6">
+                    <h1 class="display-5 fw-bolder" style="margin-top: 0.4em;">Kitap</h1>
+                    <div class="small mb-1">Marka: BKM Kitap</div>
+                    <div class="fs-5 mb-5">
+                        <span>200.00 TL</span>
+                    </div>
+                    <p class="lead">
+                        Ürün Açıklaması:
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, harum quam! Harum ex
+                        dignissimos consequatur aspernatur, enim iusto beatae nobis?
+                    </p>
+                    <div class="d-flex">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                            style="max-width: 3rem" />
+                        <button class="btn btn-success flex-shrink-0 no-curved" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Karta ekle
+                        </button>
+                    </div>
+                </div>
+
+                <hr class="my-4" style="width: 95%; margin: auto;">
+
+                <div id="view-details">
+                    <div class="view-left-details">
+                        <!-- Teknik Özellikler -->
+                        <div class="technical-details">
+
+                            <!-- Teknik Özellikler Header -->
+                            <div class="row row-header">
+                                <div class="col">Teknik Özellikler</div>
+                            </div>
+
+                            <!-- Teknik Özellikler Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Pil Kimyası
+                                </div>
+                                <div class="col">
+                                    Lithum-ion
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Pil Hücre Sayısı
+                                </div>
+                                <div class="col">
+                                    2 Hücreli
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Güvenlik
+                                </div>
+                                <div class="col">
+                                    Finger Print Reader
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Ram Özellikleri -->
+                        <div class="technical-details">
+
+                            <!-- Ram Özellikleri Header -->
+                            <div class="row row-header">
+                                <div class="col">Ram Özellikleri</div>
+                            </div>
+
+                            <!-- Ram Özellikleri Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ram (Sistem Belleği)
+                                </div>
+                                <div class="col">
+                                    8 GB
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ram Tipi
+                                </div>
+                                <div class="col">
+                                    LPDDR4X
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Ekran kartı -->
+                        <div class="technical-details">
+
+                            <!-- Ekran kartı Header -->
+                            <div class="row row-header">
+                                <div class="col">Ekran kartı</div>
+                            </div>
+
+                            <!-- Ekran kartı Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Kartı Chipset Marka
+                                </div>
+                                <div class="col">
+                                    Intel
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Kartı Chipseti
+                                </div>
+                                <div class="col">
+                                    Intel® Iris Xe Graphics
+                                </div>
+                            </div>
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Kartı Bellek Tipi
+                                </div>
+                                <div class="col">
+                                    Belirtilmemiş
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Kartı Hafızası
+                                </div>
+                                <div class="col">
+                                    Paylaşımlı
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Kartı Tipi
+                                </div>
+                                <div class="col">
+                                    Paylaşımlı
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- HDD Özellikleri -->
+                        <div class="technical-details">
+
+                            <!-- HDD Özellikleri Header -->
+                            <div class="row row-header">
+                                <div class="col">HDD Özellikleri</div>
+                            </div>
+
+                            <!-- HDD Özellikleri Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Disk Kapasitesi
+                                </div>
+                                <div class="col">
+                                    256 GB
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Disk Türü
+                                </div>
+                                <div class="col">
+                                    SSD
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Güç -->
+                        <div class="technical-details">
+
+                            <!-- Güç Header -->
+                            <div class="row row-header">
+                                <div class="col">Güç</div>
+                            </div>
+
+                            <!-- Güç Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Pil Ömrü
+                                </div>
+                                <div class="col">
+                                    Belirtilmemiş.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Multimedya -->
+                        <div class="technical-details">
+
+                            <!-- Multimedya Header -->
+                            <div class="row row-header">
+                                <div class="col">Multimedya</div>
+                            </div>
+
+                            <!-- Multimedya Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Kulaklık Çıkışı
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Multimedya Özellikler
+                                </div>
+                                <div class="col">
+                                    Kamera
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Kamera
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Parmak İzi Okuyucu
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Klavye -->
+                        <div class="technical-details">
+
+                            <!-- Klavye Header -->
+                            <div class="row row-header">
+                                <div class="col">Klavye</div>
+                            </div>
+
+                            <!-- Klavye Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Klavye Düzeni
+                                </div>
+                                <div class="col">
+                                    Türkçe Q
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Monitör -->
+                        <div class="technical-details">
+
+                            <!-- Monitör Header -->
+                            <div class="row row-header">
+                                <div class="col">Monitör</div>
+                            </div>
+
+                            <!-- Monitör Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Monitör Tipi
+                                </div>
+                                <div class="col">
+                                    IPS
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- İşletim Sistemi -->
+                        <div class="technical-details">
+
+                            <!-- İşletim Sistemi Header -->
+                            <div class="row row-header">
+                                <div class="col">İşletim Sistemi</div>
+                            </div>
+
+                            <!-- İşletim Sistemi Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşletim Sistemi
+                                </div>
+                                <div class="col">
+                                    Windows 11 Home 64
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Genel Özellikler -->
+                        <div class="technical-details">
+
+                            <!-- Genel Özellikler Header -->
+                            <div class="row row-header">
+                                <div class="col">Genel Özellikler</div>
+                            </div>
+
+                            <!-- Genel Özellikler Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Renk
+                                </div>
+                                <div class="col">
+                                    Gümüş
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Hızlı Şarj
+                                </div>
+                                <div class="col">
+                                    Yok
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Menşei
+                                </div>
+                                <div class="col">
+                                    Çin
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Garanti
+                                </div>
+                                <div class="col">
+                                    24
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="view-right-details">
+
+                        <!-- İşlemci Tipi -->
+                        <div class="technical-details">
+
+                            <!-- İşlemci Tipi Header -->
+                            <div class="row row-header">
+                                <div class="col">İşlemci Tipi</div>
+                            </div>
+
+                            <!-- İşlemci Tipi Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Markası
+                                </div>
+                                <div class="col">
+                                    Intel
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Nesli
+                                </div>
+                                <div class="col">
+                                    11. Nesil
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Teknolojisi
+                                </div>
+                                <div class="col">
+                                    Core i5
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Numarası
+                                </div>
+                                <div class="col">
+                                    1155G7
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Hızı
+                                </div>
+                                <div class="col">
+                                    2.5 GHz Turbo Boost 4.5 GHz
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Ön Bellek
+                                </div>
+                                <div class="col">
+                                    8 MB
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    İşlemci Çekirdek Sayısı
+                                </div>
+                                <div class="col">
+                                    4 Çekirdek
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Bağlantı Özellikleri + Portlar -->
+                        <div class="technical-details">
+
+                            <!-- Ekran Özellikleri Header -->
+                            <div class="row row-header">
+                                <div class="col">Ekran Özellikleri</div>
+                            </div>
+
+                            <!-- Ekran Özellikleri Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Boyutu
+                                </div>
+                                <div class="col">
+                                    15.6 inch
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Yenileme Hızı
+                                </div>
+                                <div class="col">
+                                    Belirtilmemiş
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ekran Özellikleri
+                                </div>
+                                <div class="col">
+                                    Full HD
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Çözünürlük (Piksel)
+                                </div>
+                                <div class="col">
+                                    1920 x 1080
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    IPS
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Full HD
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    HD
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    TN
+                                </div>
+                                <div class="col">
+                                    Yok
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Dokunmatik Ekran
+                                </div>
+                                <div class="col">
+                                    Yok
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Bağlantı Özellikleri + Portlar -->
+                        <div class="technical-details">
+
+                            <!-- Bağlantı Özellikleri + Portlar Header -->
+                            <div class="row row-header">
+                                <div class="col">Bağlantı Özellikleri + Portlar</div>
+                            </div>
+
+                            <!-- Bağlantı Özellikleri + Portlar Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Bağlantı Özellikleri (USB 2.0)
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Bağlantı Özellikleri (USB 3.2 (Gen 1))
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Bağlantı Özellikleri (USB TYPE-C)
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Bluetooth Teknolojisi
+                                </div>
+                                <div class="col">
+                                    Bluetooth 4.2
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Ethernet
+                                </div>
+                                <div class="col">
+                                    Yok
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Wi-Fi
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    HDMI
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Kart Yuvası
+                                </div>
+                                <div class="col">
+                                    Yok
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Bluetooth
+                                </div>
+                                <div class="col">
+                                    Var
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Diğer -->
+                        <div class="technical-details">
+
+                            <!-- Diğer Header -->
+                            <div class="row row-header">
+                                <div class="col">Diğer</div>
+                            </div>
+
+                            <!-- Diğer Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Aydınlatmalı Klavye
+                                </div>
+                                <div class="col">
+                                    Yok
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Kullanım Amacı
+                                </div>
+                                <div class="col">
+                                    Ev ve Öğrenci
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Kullanım Amacı
+                                </div>
+                                <div class="col">
+                                    Ofis ve İş
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Üretici Part Numarası
+                                </div>
+                                <div class="col">
+                                    53013PMR
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Ağırlık & boyutlar -->
+                        <div class="technical-details">
+
+                            <!-- Ağırlık & boyutlar Header -->
+                            <div class="row row-header">
+                                <div class="col">Ağırlık & boyutlar</div>
+                            </div>
+
+                            <!-- Ağırlık & boyutlar Content -->
+                            <div class="row row-content">
+                                <div class="col">
+                                    Cihaz Ağırlığı
+                                </div>
+                                <div class="col">
+                                    1.56 Kg.
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Yükseklik
+                                </div>
+                                <div class="col">
+                                    16.9 mm
+                                </div>
+                            </div>
+
+                            <div class="row row-content">
+                                <div class="col">
+                                    Genişlik
+                                </div>
+                                <div class="col">
+                                    357,8 mm
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

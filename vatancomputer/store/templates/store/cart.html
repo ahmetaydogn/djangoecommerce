@@ -1,0 +1,121 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Container -->
+<div class="container-md" id="cart-container">
+    <div class="items thumbnail">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="item-image" scope="col"></th>
+                    <th scope="col">Ürün Adı</th>
+                    <th scope="col">Fiyat</th>
+                    <th scope="col">Miktar</th>
+                    <th scope="col">Toplam Fiyat</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td id="item-image">
+                        <img src="{% static 'images/book_image.jpg' %}" alt="item_image">
+                    </td>
+                    <td>
+                        Kitap
+                        <br>
+                        <small class="item-brand">Marka</small>
+                    </td>
+                    <td>200 TL</td>
+                    <td>
+                        2
+                        <div class="quantity">
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-up.png' %}">
+
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-down.png' %}">
+                        </div>
+                    </td>
+                    <td>400 TL</td>
+                </tr>
+                <tr>
+                    <td id="item-image">
+                        <img src="{% static 'images/headphones.jpg' %}" alt="item_image">
+                    </td>
+                    <td>
+                        Kulaklık
+                        <br>
+                        <small class="item-brand">Marka</small>
+                    </td>
+                    <td>200 TL</td>
+                    <td>
+                        6
+                        <div class="quantity">
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-up.png' %}">
+
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-down.png' %}">
+                        </div>
+                    </td>
+                    <td>1200 TL</td>
+                </tr>
+                <tr>
+                    <td id="item-image">
+                        <img src="{% static 'images/shoes_image.jpg' %}" alt="item_image">
+                    </td>
+                    <td>
+                        Ayakkabı
+                        <br>
+                        <small class="item-brand">Marka</small>
+                    </td>
+                    <td>200 TL</td>
+                    <td>
+                        3
+                        <div class="quantity">
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-up.png' %}">
+
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-down.png' %}">
+                        </div>
+                    </td>
+                    <td>600 TL</td>
+                </tr>
+                <tr>
+                    <td id="item-image">
+                        <img src="{% static 'images/source_code_image.jpg' %}" alt="item_image">
+                    </td>
+                    <td>
+                        Yazılım
+                        <br>
+                        <small class="item-brand">Marka</small>
+                    </td>
+                    <td>200 TL</td>
+                    <td>
+                        4
+                        <div class="quantity">
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-up.png' %}">
+
+                            <img class="chg-quantity update-cart" src="{% static 'images/arrow-down.png' %}">
+                        </div>
+                    </td>
+                    <td>800 TL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="items-info thumbnail">
+        <a href="{% url 'store:store' %}" class="btn btn-outline-dark no-curved">← Alışverişe Geri Dön</a>
+        <br>
+        <br>
+        <div class="shopping-info">
+            <h4>
+                Ürün Adeti: <strong>10</strong>
+            </h4>
+            <h4>
+                Ürün Fiyatı: <strong>1560 TL</strong>
+            </h4>
+            <hr>
+            <a class="btn btn-success no-curved" style="float:right; margin:5px; clear:both;" href="{% url 'store:checkout' %}">Sipariş
+                Toplamı</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
