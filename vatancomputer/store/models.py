@@ -145,6 +145,22 @@ class Order(models.Model):
     
     def __str__(self):
         return str(self.id)
+    
+    @property
+    def summary_item_count(self):
+        orderitems = self.orderitem_set.all()
+        item_count = 0
+        for orderitem in orderitems:
+            item_count += orderitem.amount
+        return item_count
+    
+    @property
+    def summary_item_price(self):
+        orderitems = self.orderitem_set.all()
+        price_sum = 0
+        for orderitem in orderitems:
+            price_sum += orderitem.amount * orderitem.product.price
+        return price_sum
 
 # Order ile OrderItem mantığına internetten baktım
 class OrderItem(models.Model):
@@ -155,6 +171,10 @@ class OrderItem(models.Model):
     
     def __str__(self):
         return str(self.id)
+    
+    @property
+    def summary_price(self):
+        return (self.amount * self.product.price)
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)

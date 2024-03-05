@@ -9,7 +9,17 @@ def store(request):
     return render(request, 'store/store.html', context=context)
 
 def cart(request):
-    context = { }
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        # https://www.letscodemore.com/blog/django-get-or-create/
+        order, created = models.Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        print("çalışıyor")
+    else:
+        items = []
+        order = []
+        
+    context = { "order" : order, "items" : items }
     return render(request, 'store/cart.html', context=context)
 
 def checkout(request):

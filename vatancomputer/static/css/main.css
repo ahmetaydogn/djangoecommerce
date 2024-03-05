@@ -11,6 +11,9 @@ body {
 .carousel-item img {
   object-fit: contain !important;
 }
+.hide {
+  display: none !important;
+}
 
 /* Main */
 .cards {
@@ -311,7 +314,7 @@ body {
     width: 100% !important;
     display: flex !important;
     flex-direction: column;
-    margin: 0px;
+    margin: 0px !important;
   }
 
   .items {
