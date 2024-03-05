@@ -20,7 +20,7 @@
                 <span id="card-bottom">
                     <div class="btn-group">
                         <a href="#" class="btn btn-success">Satın Al</a>
-                        <a href="#" class="btn btn-outline-secondary">İncele</a>
+                        <a href="{% url 'store:view' productId=product.id %}" class="btn btn-outline-secondary">İncele</a>
                     </div>
                     <h4 style="font-size: 1em;">{{ product.price|floatformat:2 }} <span style="font-size: 0.8em;">TL</span></h4>
                 </span>

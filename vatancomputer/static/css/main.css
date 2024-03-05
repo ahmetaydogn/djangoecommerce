@@ -8,6 +8,9 @@ body {
 .no-curved {
   border-radius: 0px !important;
 }
+.carousel-item img {
+  object-fit: contain !important;
+}
 
 /* Main */
 .cards {
@@ -167,6 +170,10 @@ body {
 #view-details > div {
   width: 45%;
 }
+#view-description {
+  font-size: 1em !important;
+  line-height: 1.2em;
+}
 .row-header {
   font-size: 2em;
   font-weight: 700;
@@ -257,6 +264,9 @@ body {
   #view-details > div {
     width: 100%;
   }
+  #view-description {
+    font-size: 0.9em !important;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -279,6 +289,9 @@ body {
   }
   .row-content {
     border-width: 100%;
+  }
+  #view-description {
+    font-size: 1em !important;
   }
 }
 

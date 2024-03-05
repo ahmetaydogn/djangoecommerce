@@ -103,7 +103,7 @@ class ProductDetail(models.Model):
     width = models.CharField(max_length=50)
     
     def __str__(self):
-        return str(self.id)
+        return str(f"{self.product_set.get(productDetail=self).brand} - {self.product_set.get(productDetail=self).name}")
     
        
 class Product(models.Model):
@@ -124,6 +124,14 @@ class Product(models.Model):
         except:
             image_url = ''
         return image_url
+    
+    @property
+    def getImageList(self):
+        try:
+            image_urls = self.itemimage_set.filter(product=self).order_by('image_order').all()
+        except:
+            image_urls = []
+        return image_urls
 
 class ItemImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)

@@ -16,6 +16,15 @@ def checkout(request):
     context = { }
     return render(request, 'store/checkout.html', context=context)
 
-def view(request):
-    context = { }
+def view(request, productId):
+    product = models.Product.objects.get(id=productId)
+    productImages = list(product.getImageList)
+    activeImage = None
+    for product in productImages:
+        if product.image_order == 1:
+            activeImage = product
+            productImages.remove(product)
+    iterator = range(2, len(productImages))
+    product = models.Product.objects.get(id=productId)
+    context = { "product" : product, "productImages" : productImages, "activeImage" : activeImage, "iterator" : range(1, len(productImages) + 1) }
     return render(request, 'store/view.html', context=context)

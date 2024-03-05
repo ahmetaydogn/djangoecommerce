@@ -9,52 +9,61 @@
     <section class="py-5" id="view-section">
         <div class="container-md px-4 px-lg-5 my-5" style="background-color: #fdfdfd;">
             <div class="row gx-4 gx-lg-5 align-items-center" id="view-items-container">
+
                 <div class="col-md-6" id="view-image">
                     <!-- carousel -->
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
+                            <button type="button" style="background-color: gray;"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            {% for i in iterator %}
+                            <button type="button" style="background-color: gray;"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{i}}"
+                                aria-label="Slide {{i}}"></button>
+                            {% endfor %}
                         </div>
+
+                        <!-- Fix Here; Burayı Düzelt la -->
+                        <!-- Düzelttim -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{% static 'images/book_image.jpg' %}" class=" d-block w-100" alt="...">
+                                <img src="{{ activeImage.image.url }}" class=" d-block w-100" alt="...">
                             </div>
+
+                            {% for image in productImages %}
                             <div class="carousel-item">
-                                <img src="{% static 'images/headphones.jpg' %}" class=" d-block w-100" alt="...">
+                                <img src="{{ image.image.url }}" class=" d-block w-100" alt="...">
                             </div>
-                            <div class="carousel-item">
-                                <img src="{% static 'images/thirt_image.jpg' %}" class=" d-block w-100" alt="...">
-                            </div>
+                            {% endfor %}
                         </div>
+
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                             data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon" style="background-color: gray; border-radius: 35%;"
+                                aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
                             data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon" style="background-color: gray; border-radius: 35%;"
+                                aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
                     <!-- <img class="card-img-top mb-5 mb-md-0" src="images/book_image.jpg"
                             alt="..." /> -->
                 </div>
+
+
                 <div class="col-md-6">
-                    <h1 class="display-5 fw-bolder" style="margin-top: 0.4em;">Kitap</h1>
-                    <div class="small mb-1">Marka: BKM Kitap</div>
+                    <h1 class="display-5 fw-bolder" style="margin-top: 0.4em;">{{ product.name }}</h1>
+                    <div class="small mb-1">{{ product.brand }}</div>
                     <div class="fs-5 mb-5" style="margin-bottom: 0.8em !important;">
-                        <span>200.00 TL</span>
+                        <span><strong style="font-weight: 600;">{{ product.price|floatformat:2 }} TL</strong></span>
                     </div>
-                    <p class="lead">
-                        Ürün Açıklaması:
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, harum quam! Harum ex
-                        dignissimos consequatur aspernatur, enim iusto beatae nobis?
+                    <p class="lead" id="view-description">
+                            {{ product.productDetail.description }}
                     </p>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
@@ -84,7 +93,7 @@
                                     Pil Kimyası
                                 </div>
                                 <div class="col">
-                                    Lithum-ion
+                                    {{ product.productDetail.batteryType }}
                                 </div>
                             </div>
 
@@ -93,7 +102,7 @@
                                     Pil Hücre Sayısı
                                 </div>
                                 <div class="col">
-                                    2 Hücreli
+                                    {{ product.productDetail.batteryCellCount }}
                                 </div>
                             </div>
 
@@ -102,7 +111,7 @@
                                     Güvenlik
                                 </div>
                                 <div class="col">
-                                    Finger Print Reader
+                                    {{ product.productDetail.security }}
                                 </div>
                             </div>
 
@@ -123,7 +132,7 @@
                                     Ram (Sistem Belleği)
                                 </div>
                                 <div class="col">
-                                    8 GB
+                                    {{ product.productDetail.ram }}
                                 </div>
                             </div>
 
@@ -132,7 +141,7 @@
                                     Ram Tipi
                                 </div>
                                 <div class="col">
-                                    LPDDR4X
+                                    {{ product.productDetail.ramType }}
                                 </div>
                             </div>
                         </div>
@@ -152,7 +161,7 @@
                                     Ekran Kartı Chipset Marka
                                 </div>
                                 <div class="col">
-                                    Intel
+                                    {{ product.productDetail.graphicsCardChipsetBrand }}
                                 </div>
                             </div>
 
@@ -161,7 +170,7 @@
                                     Ekran Kartı Chipseti
                                 </div>
                                 <div class="col">
-                                    Intel® Iris Xe Graphics
+                                    {{ product.productDetail.graphicsCardChipset }}
                                 </div>
                             </div>
                             <div class="row row-content">
@@ -169,7 +178,7 @@
                                     Ekran Kartı Bellek Tipi
                                 </div>
                                 <div class="col">
-                                    Belirtilmemiş
+                                    {{ product.productDetail.graphicsCardMemoryType }}
                                 </div>
                             </div>
 
@@ -178,7 +187,7 @@
                                     Ekran Kartı Hafızası
                                 </div>
                                 <div class="col">
-                                    Paylaşımlı
+                                    {{ product.productDetail.graphicsCardMemory }}
                                 </div>
                             </div>
 
@@ -187,7 +196,7 @@
                                     Ekran Kartı Tipi
                                 </div>
                                 <div class="col">
-                                    Paylaşımlı
+                                    {{ product.productDetail.graphicsCardType }}
                                 </div>
                             </div>
                         </div>
@@ -207,7 +216,7 @@
                                     Disk Kapasitesi
                                 </div>
                                 <div class="col">
-                                    256 GB
+                                    {{ product.productDetail.diskCapacity }}
                                 </div>
                             </div>
 
@@ -216,7 +225,7 @@
                                     Disk Türü
                                 </div>
                                 <div class="col">
-                                    SSD
+                                    {{ product.productDetail.diskType }}
                                 </div>
                             </div>
                         </div>
@@ -236,7 +245,7 @@
                                     Pil Ömrü
                                 </div>
                                 <div class="col">
-                                    Belirtilmemiş.
+                                    {{ product.productDetail.power }}
                                 </div>
                             </div>
                         </div>
@@ -256,7 +265,7 @@
                                     Kulaklık Çıkışı
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.multimediaHeadphoneOutput }}
                                 </div>
                             </div>
 
@@ -265,7 +274,7 @@
                                     Multimedya Özellikler
                                 </div>
                                 <div class="col">
-                                    Kamera
+                                    {{ product.productDetail.multimediaFeatures }}
                                 </div>
                             </div>
 
@@ -274,7 +283,7 @@
                                     Kamera
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.multimediaCamera }}
                                 </div>
                             </div>
 
@@ -283,7 +292,7 @@
                                     Parmak İzi Okuyucu
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.multimediaFingerprintReader }}
                                 </div>
                             </div>
                         </div>
@@ -303,7 +312,7 @@
                                     Klavye Düzeni
                                 </div>
                                 <div class="col">
-                                    Türkçe Q
+                                    {{ product.productDetail.keyboard }}
                                 </div>
                             </div>
                         </div>
@@ -323,7 +332,7 @@
                                     Monitör Tipi
                                 </div>
                                 <div class="col">
-                                    IPS
+                                    {{ product.productDetail.monitor }}
                                 </div>
                             </div>
                         </div>
@@ -343,7 +352,7 @@
                                     İşletim Sistemi
                                 </div>
                                 <div class="col">
-                                    Windows 11 Home 64
+                                    {{ product.productDetail.operatingSystem }}
                                 </div>
                             </div>
                         </div>
@@ -363,7 +372,7 @@
                                     Renk
                                 </div>
                                 <div class="col">
-                                    Gümüş
+                                    {{ product.productDetail.color }}
                                 </div>
                             </div>
 
@@ -372,7 +381,7 @@
                                     Hızlı Şarj
                                 </div>
                                 <div class="col">
-                                    Yok
+                                    {{ product.productDetail.fastCharging }}
                                 </div>
                             </div>
 
@@ -381,7 +390,7 @@
                                     Menşei
                                 </div>
                                 <div class="col">
-                                    Çin
+                                    {{ product.productDetail.origin }}
                                 </div>
                             </div>
 
@@ -390,7 +399,7 @@
                                     Garanti
                                 </div>
                                 <div class="col">
-                                    24
+                                    {{ product.productDetail.guarantee }}
                                 </div>
                             </div>
                         </div>
@@ -412,7 +421,7 @@
                                     İşlemci Markası
                                 </div>
                                 <div class="col">
-                                    Intel
+                                    {{ product.productDetail.processorType }}
                                 </div>
                             </div>
 
@@ -421,7 +430,7 @@
                                     İşlemci Nesli
                                 </div>
                                 <div class="col">
-                                    11. Nesil
+                                    {{ product.productDetail.processorGen }}
                                 </div>
                             </div>
 
@@ -430,7 +439,7 @@
                                     İşlemci Teknolojisi
                                 </div>
                                 <div class="col">
-                                    Core i5
+                                    {{ product.productDetail.processorTech }}
                                 </div>
                             </div>
 
@@ -439,7 +448,7 @@
                                     İşlemci Numarası
                                 </div>
                                 <div class="col">
-                                    1155G7
+                                    {{ product.productDetail.processorNum }}
                                 </div>
                             </div>
 
@@ -448,7 +457,7 @@
                                     İşlemci Hızı
                                 </div>
                                 <div class="col">
-                                    2.5 GHz Turbo Boost 4.5 GHz
+                                    {{ product.productDetail.processorSpeed }}
                                 </div>
                             </div>
 
@@ -457,7 +466,7 @@
                                     İşlemci Ön Bellek
                                 </div>
                                 <div class="col">
-                                    8 MB
+                                    {{ product.productDetail.processorCache }}
                                 </div>
                             </div>
 
@@ -466,7 +475,7 @@
                                     İşlemci Çekirdek Sayısı
                                 </div>
                                 <div class="col">
-                                    4 Çekirdek
+                                    {{ product.productDetail.processorCore }}
                                 </div>
                             </div>
 
@@ -487,7 +496,7 @@
                                     Ekran Boyutu
                                 </div>
                                 <div class="col">
-                                    15.6 inch
+                                    {{ product.productDetail.screenSize }}
                                 </div>
                             </div>
 
@@ -496,7 +505,7 @@
                                     Ekran Yenileme Hızı
                                 </div>
                                 <div class="col">
-                                    Belirtilmemiş
+                                    {{ product.productDetail.screenrRefreshRate }}
                                 </div>
                             </div>
 
@@ -505,7 +514,7 @@
                                     Ekran Özellikleri
                                 </div>
                                 <div class="col">
-                                    Full HD
+                                    {{ product.productDetail.screenFeatures }}
                                 </div>
                             </div>
 
@@ -514,7 +523,7 @@
                                     Çözünürlük (Piksel)
                                 </div>
                                 <div class="col">
-                                    1920 x 1080
+                                    {{ product.productDetail.screenResolution }}
                                 </div>
                             </div>
 
@@ -523,7 +532,7 @@
                                     IPS
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.screenIPS }}
                                 </div>
                             </div>
 
@@ -532,7 +541,7 @@
                                     Full HD
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.screenFullHD }}
                                 </div>
                             </div>
 
@@ -541,7 +550,7 @@
                                     HD
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.screenHD }}
                                 </div>
                             </div>
 
@@ -550,7 +559,7 @@
                                     TN
                                 </div>
                                 <div class="col">
-                                    Yok
+                                    {{ product.productDetail.screenTN }}
                                 </div>
                             </div>
 
@@ -559,7 +568,7 @@
                                     Dokunmatik Ekran
                                 </div>
                                 <div class="col">
-                                    Yok
+                                    {{ product.productDetail.screenTouch }}
                                 </div>
                             </div>
 
@@ -580,7 +589,7 @@
                                     Bağlantı Özellikleri (USB 2.0)
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.connectionSpecificationUSB20 }}
                                 </div>
                             </div>
 
@@ -589,7 +598,7 @@
                                     Bağlantı Özellikleri (USB 3.2 (Gen 1))
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.connectionSpecificationUSB32 }}
                                 </div>
                             </div>
 
@@ -598,7 +607,7 @@
                                     Bağlantı Özellikleri (USB TYPE-C)
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.connectionSpecificationUSBTypeC }}
                                 </div>
                             </div>
 
@@ -607,7 +616,7 @@
                                     Bluetooth Teknolojisi
                                 </div>
                                 <div class="col">
-                                    Bluetooth 4.2
+                                    {{ product.productDetail.connectionSpecificationBluetoothTech }}
                                 </div>
                             </div>
 
@@ -616,7 +625,7 @@
                                     Ethernet
                                 </div>
                                 <div class="col">
-                                    Yok
+                                    {{ product.productDetail.connectionSpecificationEtherner }}
                                 </div>
                             </div>
 
@@ -625,7 +634,7 @@
                                     Wi-Fi
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.connectionSpecificationWiFi }}
                                 </div>
                             </div>
 
@@ -634,7 +643,7 @@
                                     HDMI
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.connectionSpecificationHDMI }}
                                 </div>
                             </div>
 
@@ -643,7 +652,7 @@
                                     Kart Yuvası
                                 </div>
                                 <div class="col">
-                                    Yok
+                                    {{ product.productDetail.connectionSpecificationCardSlot }}
                                 </div>
                             </div>
 
@@ -652,7 +661,7 @@
                                     Bluetooth
                                 </div>
                                 <div class="col">
-                                    Var
+                                    {{ product.productDetail.connectionSpecificationBluetooth }}
                                 </div>
                             </div>
 
@@ -673,7 +682,7 @@
                                     Aydınlatmalı Klavye
                                 </div>
                                 <div class="col">
-                                    Yok
+                                    {{ product.productDetail.illuminatedKeyboard }}
                                 </div>
                             </div>
 
@@ -682,7 +691,7 @@
                                     Kullanım Amacı
                                 </div>
                                 <div class="col">
-                                    Ev ve Öğrenci
+                                    {{ product.productDetail.intendedUse1 }}
                                 </div>
                             </div>
 
@@ -691,7 +700,7 @@
                                     Kullanım Amacı
                                 </div>
                                 <div class="col">
-                                    Ofis ve İş
+                                    {{ product.productDetail.intendedUse2 }}
                                 </div>
                             </div>
 
@@ -700,7 +709,7 @@
                                     Üretici Part Numarası
                                 </div>
                                 <div class="col">
-                                    53013PMR
+                                    {{ product.productDetail.manufacturerPartNumber }}
                                 </div>
                             </div>
                         </div>
@@ -720,7 +729,7 @@
                                     Cihaz Ağırlığı
                                 </div>
                                 <div class="col">
-                                    1.56 Kg.
+                                    {{ product.productDetail.weight }}
                                 </div>
                             </div>
 
@@ -729,7 +738,7 @@
                                     Yükseklik
                                 </div>
                                 <div class="col">
-                                    16.9 mm
+                                    {{ product.productDetail.height }}
                                 </div>
                             </div>
 
@@ -738,7 +747,7 @@
                                     Genişlik
                                 </div>
                                 <div class="col">
-                                    357,8 mm
+                                    {{ product.productDetail.width }}
                                 </div>
                             </div>
                         </div>
