@@ -63,14 +63,16 @@
                         <span><strong style="font-weight: 600;">{{ product.price|floatformat:2 }} TL</strong></span>
                     </div>
                     <p class="lead" id="view-description">
-                            {{ product.productDetail.description }}
+                        {{ product.productDetail.description }}
                     </p>
                     <div class="d-flex">
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
                             style="max-width: 3rem" />
-                        <button class="btn btn-success flex-shrink-0 no-curved" type="button">
+
+                        <!-- ToDo : Add Functionality -->
+                        <button data-product="{{ product.id }}" data-action="add" class="btn btn-success flex-shrink-0 no-curved update-cart" type="button">
                             <i class="bi-cart-fill me-1"></i>
-                            Karta ekle
+                            Satın Al
                         </button>
                     </div>
                 </div>
