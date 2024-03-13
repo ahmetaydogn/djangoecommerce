@@ -61,6 +61,7 @@
                     </li>
                 </ul>
 
+                {% if user.is_authenticated == False %}
                 <div class="form-inline my-2 my-lg-0" id="form-things">
                     <a class="btn btn-warning" href="#" id="form-login-button">Login</a>
                     <a href="{% url 'store:cart' %}">
@@ -68,6 +69,7 @@
                     </a>
                     <p id="cart-total">{{ order.summary_item_count }}</p>
                 </div>
+                {% endif %}
             </div>
         </div>
     </nav>

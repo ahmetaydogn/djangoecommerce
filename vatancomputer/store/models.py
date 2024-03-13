@@ -161,6 +161,8 @@ class Order(models.Model):
         for orderitem in orderitems:
             price_sum += orderitem.amount * orderitem.product.price
         return price_sum
+    
+
 
 # Order ile OrderItem mantığına internetten baktım
 class OrderItem(models.Model):
@@ -176,8 +178,16 @@ class OrderItem(models.Model):
     def summary_price(self):
         return (self.amount * self.product.price)
 
+class PaymentInformation(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
+    card_name = models.CharField(max_length=50, null=False, blank=False)
+    card_number = models.CharField(max_length=19, null=False, blank=False)
+    expires_end = models.CharField(max_length=5, null=False, blank=False)
+    cvv = models.CharField(max_length=3, null=False, blank=False)
+
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
+    payment_info  = models.ForeignKey(PaymentInformation, on_delete=models.SET_NULL, null=True, blank=True)
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True, blank=True)
     address = models.CharField(max_length=500)
     address_optional = models.CharField(max_length=500, null=True, blank=True)

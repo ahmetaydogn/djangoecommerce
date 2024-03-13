@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . import models
 from django.http import JsonResponse
+from django.urls import reverse, reverse_lazy
 import json
 
 # Create your views here.
@@ -34,10 +35,43 @@ def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = models.Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
     else:
+        items = []
         order = { 'summary_item_count':0, 'summary_item_price':0 }
     
-    context = { "order" : order }
+    if (request.method == "POST") and (request.POST is not None):
+        clean_data = request.POST
+        print("add 1")
+        if (request.user.is_authenticated == False):
+            firstName = clean_data['firstName']
+            lastName = clean_data['lastName']
+            username = clean_data['username']
+            email = clean_data['email']
+        else:
+            print("add 2")
+            address1 = clean_data['address']
+            address2 = clean_data['address2']
+            city = clean_data['city']
+            zipcode = clean_data['zipcode']
+            payment_method = clean_data['paymentMethod']
+            cartName = clean_data['cartName']
+            cartNumber = clean_data['cartNumber']
+            cartExpiration = clean_data['cartExpiration']
+            cartCvv = clean_data['cartCvv']
+
+            paymentInformation = models.PaymentInformation(customer=customer, payment_method=payment_method, card_name=cartName
+                                                                        ,card_number=cartNumber, expires_end=cartExpiration, cvv=cartCvv)
+            paymentInformation.save()
+            shippingAdress = models.ShippingAddress.objects.create(customer=customer, payment_info=paymentInformation, 
+                                                order=order, address=address1, address_optional=address2, 
+                                                city=city, zipcode=zipcode)
+            shippingAdress.save()
+            return redirect(reverse('store:store'))
+
+            
+    product = models.Product.objects.all()
+    context = { "order" : order, "items" : items }
     return render(request, 'store/checkout.html', context=context)
 
 def view(request, productId):
@@ -65,9 +99,6 @@ def update_item(request):
     productId = data['productId']
     action = data['action']
     
-    print('Action: ', action)
-    print('Product Id: ', productId)
-    
     customer = request.user.customer
     product = models.Product.objects.get(id=productId)
     order, created = models.Order.objects.get_or_create(customer=customer, complete='False')
@@ -84,4 +115,22 @@ def update_item(request):
         orderItem.delete()
     
     return JsonResponse('Item was updated!', safe=False)
+
+def complete_order(request):
+    data = json.loads(request.body)
+    orderId = data['orderId']
+    action = data['action']
+    
+    customer = request.user.customer
+    order, created = models.Order.objects.get_or_create(customer=customer, complete='False')
+    orderItems = order.orderitem_set.all()
+    
+    if action == "complete" and len(orderItems) > 0:
+        for item in orderItems:
+            item.product.amount = item.product.amount - item.amount
+            item.product.save()
+        order.complete = True
+    
+    order.save()
         
+    return JsonResponse('Payment is successful!', safe=False)
